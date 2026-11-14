@@ -1,0 +1,25 @@
+name: Validate FlowLite Cloudflare backend
+on:
+  push:
+    paths:
+      - "cloudflare/**"
+      - ".github/workflows/cloudflare-validate.yml"
+  workflow_dispatch:
+jobs:
+  syntax-and-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check Worker JavaScript syntax
+        run: node --check cloudflare/src/index.js
+      - name: Validate D1 SQL schema
+        run: |
+          python - <<'PY'
+          import sqlite3
+          db = sqlite3.connect(':memory:')
+          db.executescript(open('cloudflare/migrations/0001_init.sql').read())
+          print('D1 schema SQL OK')
+          PY
