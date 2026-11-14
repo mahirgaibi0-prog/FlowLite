@@ -1,0 +1,11 @@
+name = "flowlite-api"
+main = "src/index.js"
+compatibility_date = "2026-11-14"
+[vars]
+ENVIRONMENT = "production"
+CORS_ORIGINS = ""
+[[d1_databases]]
+binding = "DB"
+database_name = "flowlite-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
