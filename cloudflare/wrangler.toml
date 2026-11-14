@@ -7,5 +7,5 @@ CORS_ORIGINS = ""
 [[d1_databases]]
 binding = "DB"
 database_name = "flowlite-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "1895c1d6-ff7e-4df3-afa3-a7cfb8f71827"
 migrations_dir = "migrations"
